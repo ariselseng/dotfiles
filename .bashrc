@@ -22,6 +22,20 @@
 		nanox () { nano $1 && chmod u+x $1 ;}
 	#####
 
+	 # dev
+        # ---------
+                # merge the remote changes (e.g. 'git pull') before pushing again
+                alias gpp='git pull --rebase && git push'
+
+                # prevents creating merge commits
+                alias gmf='git merge --ff-only'
+
+                # makes it easy to review changes in files.
+                alias gap='git add --patch'
+
+                # interactively add files
+                alias gai='git add --interactive'
+	
 
 	# filesystem
 	# -----------
