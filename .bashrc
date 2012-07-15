@@ -9,7 +9,6 @@
 
 	GREP_OPTIONS="--exclude-dir=\.svn --exclude-dir=log --exclude-dir=\.git"
 	export GREP_OPTIONS 
-PATH=$PATH:/home/ari/Dropbox/code/bash/scripts
 #####
 
 
@@ -103,6 +102,7 @@ PATH=$PATH:/home/ari/Dropbox/code/bash/scripts
 		alias flac2lamevoice='for file in *.flac; do flac -cd "$file" | lame -q0 --abr 80 -mm -a - "${file%.flac}.mp3"; done'
 		alias flac2wav='for i in *.flac; do gst-launch-0.10 filesrc location="$i" ! flacdec ! wavenc ! filesink location="${i%.flac}.wav"; done'
 		alias wav2flac='flac --best *.wav'
+		function m4b2lamevoice () { faad --stdio "$1" |lame -q0 --abr 80 -mm -a - -o "${$1%.m4b}.mp3" }
 
 		# text2speech
 		say() { mplayer "http://translate.google.com/translate_tts?q=$1" > /dev/null 2>&1; }
