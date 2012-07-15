@@ -102,7 +102,9 @@
 		alias flac2lamevoice='for file in *.flac; do flac -cd "$file" | lame -q0 --abr 80 -mm -a - "${file%.flac}.mp3"; done'
 		alias flac2wav='for i in *.flac; do gst-launch-0.10 filesrc location="$i" ! flacdec ! wavenc ! filesink location="${i%.flac}.wav"; done'
 		alias wav2flac='flac --best *.wav'
-		function m4b2lamevoice () { faad --stdio "$1" |lame -q0 --abr 80 -mm -a - -o "${$1%.m4b}.mp3" }
+		function m4a2lamevoice () { faad --stdio "$1" |lame -q0 --abr 80 -mm -a - -o "${$1%.m4b}.mp3"; }
+		function m4a2lame () { faad --stdio "$1" |lame -q 0 --vbr-new -V 0 - "${$1%.m4b}.mp3"; }
+		function m4a2flac () { ffmpeg -i "$" -acodec flac "${$1%.m4b}.flac"; }
 
 		# text2speech
 		say() { mplayer "http://translate.google.com/translate_tts?q=$1" > /dev/null 2>&1; }
